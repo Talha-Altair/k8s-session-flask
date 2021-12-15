@@ -21,18 +21,27 @@ def login():
 
     req = requests.post(BACKEND_URL + '/login', json={'username': username, 'password': password})
 
-    if req.content == b'0':
+    num = json.loads(req.content.decode('utf-8'))['num']
 
-        flash('Wrong username or password!')
+    if num == 0:
 
-        return redirect(url_for('index'))
+        return render_template('index.html', num="wrong password") 
 
-    print(Session)
+    return render_template('index.html', num="logged in successfully")
+
+@app.route('/random', methods=['GET', 'POST'])
+def random_route():
+
+    req = requests.get(BACKEND_URL + '/random')
 
     num = json.loads(req.content.decode('utf-8'))['num']
+
+    if not num:
+
+        return render_template('index.html', num="not logged in")
 
     return render_template('index.html', num=num)
 
 if __name__ == '__main__':
 
-    app.run(debug=True, port=8000)
+    app.run(debug=True, port=8000, host='0.0.0.0')
