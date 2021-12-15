@@ -32,3 +32,7 @@ def login():
     num = json.loads(req.content.decode('utf-8'))['num']
 
     return render_template('index.html', num=num)
+
+if __name__ == '__main__':
+
+    app.run(debug=True, port=8000)

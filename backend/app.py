@@ -22,3 +22,7 @@ def login():
         return jsonify(random_num)
 
     return 0
+
+if __name__ == '__main__':
+
+    app.run(debug=True, port=9000)
