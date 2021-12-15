@@ -13,5 +13,18 @@
         <input type="submit" value="Login">
         <input type="reset" value="Reset">
     </form>
+
+    <!-- show num in jinja if present -->
+    {% if num %}
+        <p>{{ num }}</p>
+    {% endif %}
+    <!-- jinja flashed messages -->
+    {% if get_flashed_messages() %}
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-{{ message.type }}">
+                {{ message.message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>
