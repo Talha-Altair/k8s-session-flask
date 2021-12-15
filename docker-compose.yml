@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+
+  backend:
+
+    build: ./backend
+
+    ports:
+      - 9000:9000
+
+    hostname: backend-service
+
+    volumes:
+      - ./backend:/app
+
+  frontend:
+
+    build: ./frontend
+
+    ports:
+      - 8000:8000
+
+    environment:
+      - BACKEND_URL=http://backend-service:9000
+
+    volumes:
+      - ./frontend:/app

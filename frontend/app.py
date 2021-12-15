@@ -1,5 +1,6 @@
 from flask import Flask, json, render_template, request, redirect, url_for, flash, jsonify
 import requests
+from requests.sessions import Session
 import settings
 import json
 
@@ -25,6 +26,8 @@ def login():
         flash('Wrong username or password!')
 
         return redirect(url_for('index'))
+
+    print(Session)
 
     num = json.loads(req.content.decode('utf-8'))['num']
 
