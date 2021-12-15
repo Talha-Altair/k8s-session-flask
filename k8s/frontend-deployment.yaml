@@ -13,7 +13,7 @@ spec:
         app: frontend
     spec:
       containers:
-        - image: frontend
+        - image: docker.io/talhaabdurrahman/session-frontend:latest
           name: frontend
           ports:
             - containerPort: 8000

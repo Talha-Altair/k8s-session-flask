@@ -13,7 +13,7 @@ spec:
         app: backend
     spec:
       containers:
-        - image: backend
+        - image: docker.io/talhaabdurrahman/session-backend:latest
           name: backend
           ports:
             - containerPort: 9000
