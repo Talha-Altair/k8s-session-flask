@@ -19,5 +19,5 @@ spec:
             - containerPort: 8000
           env:
             - name: BACKEND_URL
-              value: http://backend-service:9000
+              value: http://backend
       hostname: frontend-service
