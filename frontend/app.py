@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, make_response
 import requests
 import settings
 import json
@@ -24,7 +24,7 @@ def login():
 
     if num == 0:
 
-        return render_template('index.html', num="wrong password") 
+        return render_template('index.html', num="wrong password")
 
     return render_template('index.html', num="logged in successfully")
 
@@ -35,9 +35,9 @@ def random_route():
 
     num = json.loads(req.content.decode('utf-8'))['num']
 
-    if not num:
+    if num == 0:
 
-        return render_template('index.html', num="not logged in")
+        return render_template('index.html', num="Please login first")
 
     return render_template('index.html', num=num)
 

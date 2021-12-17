@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, session
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, session, make_response
 from flask_session import Session
 from flask_cors import CORS
 from datetime import timedelta
@@ -33,12 +33,10 @@ def login():
     password = request.json.get('password')
 
     print(session.sid)
-    
 
     if password == '1234':
 
         session['username'] = username
-        session['password'] = password
 
         return jsonify({"num": 1})
 
@@ -46,8 +44,6 @@ def login():
 
 @app.route('/random', methods=['GET', 'POST'])
 def random_route():
-
-    print(session.sid)
 
     if not session.get('username'):
 
