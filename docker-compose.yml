@@ -26,3 +26,12 @@ services:
 
     volumes:
       - ./frontend:/app
+
+  redis:
+  
+      image: redis:alpine
+  
+      ports:
+        - 6379:6379
+
+      hostname: redis-service
